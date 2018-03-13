@@ -211,20 +211,9 @@ export default class App extends React.Component {
     //console.log(this.state.uploading);
     //console.log(this.state.image.uploading);
    
-    //afteredits chutiyap
+   
     return (
-      //<View
-       /* style={{
-          marginTop: 30,
-          width: 250,
-          borderRadius: 3,
-          elevation: 2,
-          shadowColor: 'rgba(0,0,0,1)',
-          shadowOpacity: 0.2,
-          shadowOffset: { width: 4, height: 4 },
-          shadowRadius: 5,
-        }}
-        *///>
+   
         <View
           style={{
             marginTop: 30,
@@ -236,10 +225,7 @@ export default class App extends React.Component {
            
         </View>
        
-        
-     // </View>
-      
-    );
+       );
     console.log(image);
   };
   
@@ -272,8 +258,6 @@ export default class App extends React.Component {
     return(
       <View>
          <Text
-          //onPress={this._copyToClipboard}
-          //onLongPress={this._share}
           style={{  
           fontSize:20,fontFamily:'sans-serif-thin'}}>
           {this.state.label}
@@ -326,7 +310,7 @@ export default class App extends React.Component {
 
       if (!pickerResult.cancelled) {
         console.log("upload function called")
-        uploadResponse = await uploadImageAws(pickerResult.uri);
+        uploadResponse = await uploadImage(pickerResult.uri);
         console.log('after upload');
        // console.log(uploadResponse);
         //console.log('afterupload');
@@ -346,10 +330,7 @@ export default class App extends React.Component {
          //this.setState({label2:classifyResult.responses[0].labelAnnotations[1].description});
          //--//tihis.setState({textReady:true});
          //----//this.setState({speechReady:true});
-        if(this.state.label=="text")
-          {
-            console.log("this is aa text");
-          }
+        
         if(this.state.lang!=='en')
         {  console.log( "translation");
           translated= await translate(classifyResult.responses[0].labelAnnotations[0].description,this.state.lang);
@@ -374,29 +355,7 @@ export default class App extends React.Component {
     }
   };
 }
-/*async function uploadImageAws(uri) {
-  console.log('started');
-  let url = 'https://file-upload-example-backend-dkhqoilqqn.now.sh/upload';
-  let uriParts = uri.split('.');
-  let fileType = uri[uri.length - 1];
-  let formData = new FormData();
-  formData.append('photo', {
-    uri,
-    name: `photo.${fileType}`,
-    type: `image/${fileType}`,
-  });
-  let options ={
-    method:'POST',
-    body:formData,
-    headers:{
-      'Accept':'application/json',
-      'Content-Type':'multipart/form-data',
-    },
-    
-  };
-  return fetch(url,options);
-}
-*/
+
 
 async function uploadImageAws(uri) {
   console.log('started');
@@ -474,7 +433,7 @@ async function translate(text,lang)
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'center',]\
     alignItems: 'center',
     backgroundColor:'red'
   },
